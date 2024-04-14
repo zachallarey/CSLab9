@@ -1,4 +1,6 @@
-#Contributer: Zachary Allarey
+# Contributer: Zachary Allarey
+from decoder import decoder
+
 
 def encode_password(password):
     encoded = ""
@@ -7,12 +9,13 @@ def encode_password(password):
         encoded += new_digit
     return encoded
 
-def decode_password(encoded_password):
-    decoded = ""
-    for digit in encoded_password:
-        original_digit = str((int(digit) - 3) % 10)
-        decoded += original_digit
-    return decoded
+
+# def decode_password(encoded_password):
+#    decoded = ""
+#    for digit in encoded_password:
+#        original_digit = str((int(digit) - 3) % 10)
+#        decoded += original_digit
+#    return decoded
 
 def menu():
     while True:
@@ -28,13 +31,13 @@ def menu():
             print("Your password has been encoded and stored!")
         elif option == "2":
             if 'encoded_password' in locals():
-                decoded_password = decode_password(encoded_password)
+                decoded_password = decoder(encoded_password)
                 print(f"The encoded password is {encoded_password}, and the original password is {decoded_password}")
             else:
                 print("Please encode a password first.")
         elif option == "3":
             break
 
+
 if __name__ == "__main__":
     menu()
-
